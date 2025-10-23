@@ -11,7 +11,7 @@ task SocketServer(type: JavaExec) {
 
   classpath = sourceSets.main.runtimeClasspath
 
-  mainClass = 'SockServer'
+  main = 'SockServer'
 }
 
 task SocketClient(type: JavaExec) {
@@ -20,7 +20,7 @@ task SocketClient(type: JavaExec) {
 
   classpath = sourceSets.main.runtimeClasspath
 
-  mainClass = 'SockClient'
+  main = 'SockClient'
 
   // allows you to provide host, host&message, host&number, host&number&message (which order does not matter as long as named correctly)
   // run with arguments e.g.: gradle SocketClient -Phost=localhost -Pmessage=secret -Pnumber=5
