@@ -38,6 +38,8 @@ task runAppAgain(type: JavaExec) {
     args(project.getProperty('num1'), project.getProperty('num2'));
   } else if (project.hasProperty("num1")){
     args(project.getProperty('num1'), 1);
+  } else {
+    args '1', '2'
   }
 }
 
@@ -65,3 +67,22 @@ task runFraction(type: JavaExec) {
 // dependencies{
 //   implementation 'org.json:json:20171018'
 // }
+task runFrac(type: JavaExec) {
+  group 'Fraction Tasks'
+  description 'Tasks which runs Fraction with optional numerator (-Pnum) and denominator (-Pdenom)'
+
+  classpath = sourceSets.main.runtimeClasspath
+
+  main = 'Fraction'
+
+  // default value definition
+  def defaultNum = '1'
+  def defaultDenom = '1'
+
+  // get values from properties, or use defaults
+  def numValue = project.hasProperty('num') ? project.getProperty('num') : defaultNum
+  def denomValue = project.hasProperty('denom') ? project.getProperty('denom') : defaultDenom
+
+  // arguments
+  args numValue, denomValue
+}
